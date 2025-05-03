@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Projekt_2._1.Models.Apartment>
+  // Typ modelu, który będzie wyświetlany
+
+@{
+    ViewData["Title"] = "List of Apartments";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Address</th>
+            <th>Area</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var apartment in Model)
+        {
+            <tr>
+                <td>@apartment.Address</td>
+                <td>@apartment.Area</td>
+                <td>@apartment.Price</td>
+                <td>@apartment.Description</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = apartment.Id })">Edit</a> |
+                    <a href="@Url.Action("Delete", new { id = apartment.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a href="@Url.Action("Create")">Create New Apartment</a>
+</p>
